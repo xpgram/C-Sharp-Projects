@@ -1,0 +1,17 @@
+﻿@model StudentManagementSystem.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+First Name: @Model.FirstName
+<br />
+Last Name: @Model.LastName
+<br />
+ID: @Model.ID
+<br />
+<a href="../edit/@Model.ID">Edit</a>
+<br />
+<a href="../delete/@Model.ID">Delete</a>

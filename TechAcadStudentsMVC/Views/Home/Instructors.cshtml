@@ -1,0 +1,17 @@
+﻿@using System.Collections.Generic
+@using TechAcadStudentsMVC.Models
+@model List<Instructor>
+
+@{
+    ViewBag.Title = "Instructors";
+}
+
+<h2>Instructors</h2>
+
+<ul>
+@{ 
+    foreach(Instructor ins in Model) {
+        <li>@ins.FirstName  @ins.LastName</li>
+    }
+}
+</ul>

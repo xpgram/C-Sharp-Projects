@@ -1,0 +1,7 @@
+\\xpgwin\Users\XPGram\Home\GitHub\C-Sharp-Projects\BlackJack\obj\Debug\BlackJack.csprojAssemblyReference.cache
+\\xpgwin\Users\XPGram\Home\GitHub\C-Sharp-Projects\BlackJack\obj\Debug\BlackJack.csproj.CoreCompileInputs.cache
+\\xpgwin\Users\XPGram\Home\GitHub\C-Sharp-Projects\BlackJack\bin\Debug\BlackJack.exe.config
+\\xpgwin\Users\XPGram\Home\GitHub\C-Sharp-Projects\BlackJack\bin\Debug\BlackJack.exe
+\\xpgwin\Users\XPGram\Home\GitHub\C-Sharp-Projects\BlackJack\bin\Debug\BlackJack.pdb
+\\xpgwin\Users\XPGram\Home\GitHub\C-Sharp-Projects\BlackJack\obj\Debug\BlackJack.exe
+\\xpgwin\Users\XPGram\Home\GitHub\C-Sharp-Projects\BlackJack\obj\Debug\BlackJack.pdb
