@@ -13,20 +13,26 @@
 
     <div class="card-body">
         @foreach (InquiryVM inq in Model) {
-        <div class="row">
-            <div class="col-3 card-text">
-                @inq.FirstName
-            </div>
-            <div class="col-3 card-text">
-                @inq.LastName
-            </div>
-            <div class="col-3 card-text">
-                @inq.EmailAddress
-            </div>
-            <div class="col-3 card-text">
-                $@inq.Quote
-            </div>
-        </div>
+            using (Html.BeginForm("Delete", "Admin", FormMethod.Post)) {
+                <input type="hidden" name="id" value="@inq.Id" />
+                <div class="row">
+                    <div class="col card-text">
+                        @inq.FirstName
+                    </div>
+                    <div class="col card-text">
+                        @inq.LastName
+                    </div>
+                    <div class="col card-text">
+                        @inq.EmailAddress
+                    </div>
+                    <div class="col card-text">
+                        $@inq.Quote
+                    </div>
+                    <div class="col card-text">
+                        <button type="submit" class="btn btn-danger mb-1 p-0">Delete</button>
+                    </div>
+                </div>
+            }
         }
     </div>
 </div>

@@ -22,5 +22,13 @@ namespace NoPorschesInsurance.Controllers
 
             return View(inquiryVMs);
         }
+
+        public ActionResult Delete(int id) {
+            using (var db = new NoPorscheInsuranceDBEntities()) {
+                db.Inquiries.Remove( db.Inquiries.Find(id) );
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

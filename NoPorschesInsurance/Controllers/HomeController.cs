@@ -54,13 +54,13 @@ namespace NoPorschesInsurance.Controllers {
             decimal quote = 50;
 
             // Add 100 for <18 year olds
-            if (DateTime.Now - inquiry.DateOfBirth > DateTime.Now - new DateTime(year: 18, 1, 1))
+            if ((DateTime.Now - inquiry.DateOfBirth).Ticks < DateTime.MinValue.AddYears(18).Ticks)
                 quote += 100;
             // Add 25 for <25 year olds
-            else if (DateTime.Now - inquiry.DateOfBirth > DateTime.Now - new DateTime(year: 25, 1, 1))
+            else if ((DateTime.Now - inquiry.DateOfBirth).Ticks < DateTime.MinValue.AddYears(25).Ticks)
                 quote += 25;
             // Add 25 for >100 year olds
-            else if (DateTime.Now - inquiry.DateOfBirth < DateTime.Now - new DateTime(year: 100, 1, 1))
+            else if ((DateTime.Now - inquiry.DateOfBirth).Ticks > DateTime.MinValue.AddYears(100).Ticks)
                 quote += 25;
 
             // Add 25 for old car <2000
@@ -73,7 +73,7 @@ namespace NoPorschesInsurance.Controllers {
             // Surcharge for Porsches
             if (inquiry.CarMake.ToLower() == "porsche") {
                 quote += 25;
-                if (inquiry.CarModel.ToLower() == "911 Carrera")
+                if (inquiry.CarModel.ToLower() == "911 carrera")
                     quote += 25;
             }
 

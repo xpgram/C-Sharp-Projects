@@ -6,6 +6,7 @@ using System.Web;
 
 namespace NoPorschesInsurance.ViewModels {
     public class InquiryVM {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
@@ -18,6 +19,7 @@ namespace NoPorschesInsurance.ViewModels {
         }
 
         public void MapFromInquiry(Inquiry inquiry) {
+            this.Id = inquiry.Id;
             this.FirstName = inquiry.FirstName;
             this.LastName = inquiry.LastName;
             this.EmailAddress = inquiry.EmailAddress;
