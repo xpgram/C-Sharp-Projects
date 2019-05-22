@@ -1,4 +1,5 @@
-﻿using NoPorschesInsurance.ViewModels;
+﻿using NoPorschesInsurance.Models;
+using NoPorschesInsurance.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

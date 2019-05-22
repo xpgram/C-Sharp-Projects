@@ -1,6 +1,5 @@
-﻿using NoPorschesInsurance;
+﻿using NoPorschesInsurance.Models;
 using NoPorschesInsurance.ViewModels;
-using NoPorschesInsurance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +28,6 @@ namespace NoPorschesInsurance.Controllers {
             using (var db = new NoPorscheInsuranceDBEntities()) {
                 db.Inquiries.Add(inquiry);
                 db.SaveChanges();
-                
-                // These db classes should be in /Models, and they aren't currently because moving them breaks the resource locator.
-                // I think this might be an issue with Visual Studio? I'm not sure why or if this really needs to happen, but try to
-                // fix it.
-
-                // When moving them back to the /Models folder, check that their namespaces match [application].Models
             }
 
             // Return success screen
@@ -51,30 +44,30 @@ namespace NoPorschesInsurance.Controllers {
 
         private static decimal calculateQuote(Inquiry inquiry) {
             // Start with base of %50/month
-            decimal quote = 50;
+            decimal quote = 50m;
 
             // Add 100 for <18 year olds
             if ((DateTime.Now - inquiry.DateOfBirth).Ticks < DateTime.MinValue.AddYears(18).Ticks)
-                quote += 100;
+                quote += 100m;
             // Add 25 for <25 year olds
             else if ((DateTime.Now - inquiry.DateOfBirth).Ticks < DateTime.MinValue.AddYears(25).Ticks)
-                quote += 25;
+                quote += 25m;
             // Add 25 for >100 year olds
             else if ((DateTime.Now - inquiry.DateOfBirth).Ticks > DateTime.MinValue.AddYears(100).Ticks)
-                quote += 25;
+                quote += 25m;
 
             // Add 25 for old car <2000
             if (inquiry.CarYear < 2000)
-                quote += 25;
+                quote += 25m;
             // Add 25 for new car >2015
             if (inquiry.CarYear > 2015)
-                quote += 25;
+                quote += 25m;
 
             // Surcharge for Porsches
             if (inquiry.CarMake.ToLower() == "porsche") {
-                quote += 25;
+                quote += 25m;
                 if (inquiry.CarModel.ToLower() == "911 carrera")
-                    quote += 25;
+                    quote += 25m;
             }
 
             // Add 10 for every speeding ticket
