@@ -1,0 +1,37 @@
+﻿@using System.Collections.Generic
+@using NewsletterAppMVC.ViewModels
+@model List<SignUpVM>
+
+<div class="row no-gutters m-3">
+    <div class="card col-sm-12 col-md-10 col-lg-6 mx-auto shadow">
+        <civ class="card-header text-center">
+            <h5 class="m-0">Sign-Ups</h5>
+        </civ>
+        <div class="card-body">
+
+            @foreach (var signup in Model) {
+                using (Html.BeginForm("Delete", "Admin", FormMethod.Post)) {
+
+                    <!-- Silly question: is this accessible from Dev Tools in Chrome? Is this a security flaw? -->
+                    <input type="hidden" name="Id" value="@signup.Id" />
+
+                    <div class="row">
+                        <div class="col-3">
+                            @signup.FirstName
+                        </div>
+                        <div class="col-3">
+                            @signup.LastName
+                        </div>
+                        <div class="col-4">
+                            @signup.EmailAddress
+                        </div>
+                        <div class="col-2">
+                            <button type"submit" class="btn btn-danger btn-block pb-0 pt-0 mb-1">Delete</button>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>

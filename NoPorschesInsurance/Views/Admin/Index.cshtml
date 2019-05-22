@@ -1,0 +1,32 @@
+﻿@using System.Collections.Generic
+@using NoPorschesInsurance.ViewModels
+@model List<InquiryVM>
+
+@{
+    ViewBag.Title = "User Application Log";
+}
+
+<div class="card shadow w-70 mx-auto">
+    <div class="card-header card-title text-center pb-1">
+        <h5>Application Log</h5>
+    </div>
+
+    <div class="card-body">
+        @foreach (InquiryVM inq in Model) {
+        <div class="row">
+            <div class="col-3 card-text">
+                @inq.FirstName
+            </div>
+            <div class="col-3 card-text">
+                @inq.LastName
+            </div>
+            <div class="col-3 card-text">
+                @inq.EmailAddress
+            </div>
+            <div class="col-3 card-text">
+                $@inq.Quote
+            </div>
+        </div>
+        }
+    </div>
+</div>

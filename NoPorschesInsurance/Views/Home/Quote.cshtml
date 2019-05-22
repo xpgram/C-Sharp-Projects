@@ -1,0 +1,11 @@
+﻿@using NoPorschesInsurance.ViewModels
+@model InquiryVM
+
+@{
+    ViewBag.Title = "Quote";
+}
+
+<div class="text-center">
+    <h2>You have been approved!</h2>
+    <h4>Your monthly rate for @Model.CoverageType  coverage would be: $@Model.Quote</h4>
+</div>
