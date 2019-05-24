@@ -1,0 +1,10 @@
+﻿@using System.Collections.Generic
+@model List<string>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@foreach (string s in Model) {
+	<p>@s</p>
+}
