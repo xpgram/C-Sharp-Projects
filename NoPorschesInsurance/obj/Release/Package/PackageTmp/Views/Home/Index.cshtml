@@ -1,0 +1,166 @@
+﻿@using NoPorschesInsurance.Models
+
+@{ViewBag.Title = "Gimme Da Suga";}
+
+<div class="text-center mt-5">
+<h1>No Porsches!</h1>
+<h1>Insurance</h1>
+<h6>Please, no porsches.</h6>
+<br />
+<h4>Would you like to apply for some of that sweet-baby coverage?</h4>
+<h4>Fill in and submit the form below for a quote.</h4>
+<br />
+</div>
+
+<div class="card shadow w-50 mx-auto">
+    <div class="card-header card-title text-center pb-1">
+        <h5>Submission Form</h5>
+    </div>
+
+    <div class="card-body">
+        @using (Html.BeginForm("SubmitCoverageApplication", "Home", FormMethod.Post)) {
+
+            <!-- Personal Information -->
+            <div class="form-group">
+                <!-- Title -->
+                <div class="row form-row col-form-label">
+                    <h5>Your Information:</h5>
+                </div>
+
+                <!-- First Name -->
+                <div class="row form-row">
+                    <div class="col-3"></div>
+                    <div class="col-4 col-form-label">
+                        <strong>First Name:</strong>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" name="FirstName" class="form-control form-control-sm form-text w-100" placeholder="John" />
+                    </div>
+                </div>
+
+                <!-- Last Name -->
+                <div class="row form-row">
+                    <div class="col-3"></div>
+                    <div class="col-4 col-form-label">
+                        <strong>Last Name:</strong>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" name="LastName" class="form-control form-control-sm form-text w-100" placeholder="Hancock" />
+                    </div>
+                </div>
+
+                <!-- Email Address -->
+                <div class="row form-row">
+                    <div class="col-3"></div>
+                    <div class="col-4 col-form-label">
+                        <strong>Email Address:</strong>
+                    </div>
+                    <div class="col-5">
+                        <input type="email" name="EmailAddress" class="form-control form-control-sm form-text w-100" placeholder="J.Hancock@example.com" />
+                    </div>
+                </div>
+            
+                <!-- Date of Birth -->
+                <div class="row form-row">
+                    <div class="col-3"></div>
+                    <div class="col-4 col-form-label">
+                        <strong>Date of Birth:</strong>
+                    </div>
+                    <div class="col-5">
+                        <input type="date" name="DateOfBirth" class="form-control form-control-sm w-100" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Information -->
+            <div class="form-group">
+                <!-- Title -->
+                <div class="row form-row col-form-label">
+                    <h5>Car Information:</h5>
+                </div>
+
+                <!-- Car Year -->
+                <div class="row form-row">
+                    <div class="col-3"></div>
+                    <div class="col-4 col-form-label">
+                        <strong>Year:</strong>
+                    </div>
+                    <div class="col-5">
+                        <input type="number" min="1900" max="@DateTime.Now.Year" value="@DateTime.Now.Year" name="CarYear" class="form-control form-control-sm form-text w-100" />
+                    </div>
+                </div>
+
+                <!-- Car Make -->
+                <div class="row form-row">
+                    <div class="col-3"></div>
+                    <div class="col-4 col-form-label">
+                        <strong>Make:</strong>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" name="CarMake" class="form-control form-control-sm form-text w-100" placeholder="Tesla" />
+                    </div>
+                </div>
+
+                <!-- Car Model -->
+                <div class="row form-row">
+                    <div class="col-3"></div>
+                    <div class="col-4 col-form-label">
+                        <strong>Model:</strong>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" name="CarModel" class="form-control form-control-sm form-text w-100" placeholder="Super" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Driver Information -->
+            <div class="form-group">
+                <!-- Title -->
+                <div class="row form-row col-form-label">
+                    <h5>Driver Information:</h5>
+                </div>
+
+                <!-- Had a DUI -->
+                <div class="row form-row">
+                    <div class="col col-form-label">
+                        <strong>Have you ever had a DUI?</strong>
+                    </div>
+                    <div class="col">
+                        <!-- I... love this giant button -->
+                        <input type="checkbox" name="HadDUI" class="form-control form-control-lg mb-1" />
+                    </div>
+                </div>
+
+                <!-- Speeding Tickets -->
+                <div class="row form-row">
+                    <div class="col col-form-label">
+                        <strong>How many speeding tickets do you have?</strong>
+                    </div>
+                    <div class="col">
+                        <input type="number" min="0" max="99" value="0" name="NumSpeedingTickets" class="form-control form-control-sm form-text w-100" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insurance Type -->
+            <div class="form-group">
+                <!-- Insurance Type -->
+                <div class="row form-row">
+                    <div class="col col-form-label">
+                        <strong>Which kind of coverage would you like to apply for?</strong>
+                    </div>
+                    <div class="col">
+                        <select class="form-control form-control-sm form-text w-100" name="CoverageType">
+                            @foreach (Inquiry.Coverage coverage in Enum.GetValues(typeof(Inquiry.Coverage))) {
+                            <option value="@coverage">@Inquiry.CoverageLabels[coverage]</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-block btn-success">Submit</button>
+        }
+    </div>
+</div>

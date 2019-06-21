@@ -1,0 +1,38 @@
+﻿@using System.Collections.Generic
+@using NoPorschesInsurance.ViewModels
+@model List<InquiryVM>
+
+@{
+    ViewBag.Title = "User Application Log";
+}
+
+<div class="card shadow w-70 mx-auto">
+    <div class="card-header card-title text-center pb-1">
+        <h5>Application Log</h5>
+    </div>
+
+    <div class="card-body">
+        @foreach (InquiryVM inq in Model) {
+            using (Html.BeginForm("Delete", "Admin", FormMethod.Post)) {
+                <input type="hidden" name="id" value="@inq.Id" />
+                <div class="row">
+                    <div class="col card-text">
+                        @inq.FirstName
+                    </div>
+                    <div class="col card-text">
+                        @inq.LastName
+                    </div>
+                    <div class="col card-text">
+                        @inq.EmailAddress
+                    </div>
+                    <div class="col card-text">
+                        $@inq.Quote
+                    </div>
+                    <div class="col card-text">
+                        <button type="submit" class="btn btn-danger mb-1 p-0">Delete</button>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
